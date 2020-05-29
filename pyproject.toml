@@ -3,6 +3,8 @@ name = "kal"
 version = "0.0.1"
 description = "Personal assistant cli tool"
 authors = ["joyongjin <wnrhd114@gmail.com>"]
+include = ["kal"]
+exclude = ["tests"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
@@ -12,7 +14,7 @@ cleo = "^0.8.1"
 ipython = "^7.14.0"
 
 [tool.poetry.scripts]
-kal = "kal:runner:main"
+kal = "kal.runner:main"
 
 [build-system]
 requires = ["poetry>=0.12"]
