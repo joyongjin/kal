@@ -1,3 +1,6 @@
+import json
+
+
 def dig(obj, *keys, default=None):
     current_value = None
     index = 0
@@ -15,3 +18,30 @@ def dig(obj, *keys, default=None):
         return default
     except IndexError:
         return default
+
+
+def json_load(some, **kwargs):
+    kwargs['encoding'] = 'utf-8'
+
+    if type(some) is str:
+        try:
+            return json.loads(some, **kwargs)
+        except ValueError as e:
+            with open(some) as f:
+                return json.load(f, **kwargs)
+    else:
+        return json.load(some, **kwargs)
+
+
+def json_dump(obj, target=None, indent=2, ensure_ascii=False, **kwargs):
+    kwargs['indent'] = indent
+    kwargs['ensure_ascii'] = ensure_ascii
+
+    if target is not None:
+        if type(target) is str:
+            with open(target, 'w') as f:
+                json.dump(obj, f, **kwargs)
+        else:
+            json.dump(obj, target, **kwargs)
+
+    json.dumps(obj, **kwargs)

@@ -8,5 +8,5 @@ from kal.storage import Storage
 def init():
     if not path.exists(path.HOME_DIR):
         os.makedirs(path.HOME_DIR, exist_ok=True)
-    Storage.initialize()
     Config.initialize()
+    Storage.initialize()

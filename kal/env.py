@@ -16,7 +16,7 @@ class path:
     if os.getenv('KAL_HOME_PATH'):
         HOME_DIR = os.getenv('KAL_HOME_PATH')
     else:
-        HOME_DIR = join(os.getenv('HOME'), '.kal')
+        HOME_DIR = os.path.join(os.getenv('HOME'), '.kal')
 
-    STORAGE_FILE = join(HOME_DIR, 'storage.json')
-    CONFIG_FILE = join(HOME_DIR, 'config.json')
+    CONFIG_FILE = os.path.join(HOME_DIR, 'config.json')
+    STORAGE_FILE = os.path.join(HOME_DIR, 'storage.json')

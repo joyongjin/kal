@@ -1,6 +1,5 @@
-import json
-
 from kal.env import path
+from kal.utils import json_load, json_dump
 
 
 class BaseJson:
@@ -15,10 +14,8 @@ class BaseJson:
     @classmethod
     def initialize(cls):
         if not path.exists(cls.filepath):
-            with open(cls.filepath, 'w') as f:
-                json.dump(cls.get_default_data(), f)
-        with open(path.STORAGE_FILE, 'r') as f:
-            cls.data = json.load(f)
+            json_dump(cls.get_default_data(), cls.filepath)
+        cls.data = json_load(cls.filepath)
 
     @classmethod
     def get(cls, key, default=None):
@@ -44,4 +41,4 @@ class WritableJson(BaseJson):
     @classmethod
     def save(cls):
         with open(cls.filepath, 'w') as f:
-            json.dump(cls.data, f)
+            json_dump(cls.data, f)
