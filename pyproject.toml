@@ -7,8 +7,10 @@ include = ["kal"]
 exclude = ["tests"]
 
 [tool.poetry.dependencies]
-python = "^3.5"
+python = "^3.6"
 cleo = "^0.8.1"
+cookiecutter = "^1.7.2"
+pend = "^1.0.2"
 
 [tool.poetry.dev-dependencies]
 ipython = "^7.14.0"
