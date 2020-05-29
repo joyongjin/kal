@@ -17,7 +17,3 @@ class Application(BaseApplication):
             CloneCommand()
         ]
         return commands
-
-
-if __name__ == "__main__":
-    Application().run()
