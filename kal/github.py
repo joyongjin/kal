@@ -1,11 +1,11 @@
-from kal.config import config_get
+from kal.config import Config
 
 
 def url_parsing(repository_name, protocol='ssh'):
     split_names = repository_name.split('/')
 
     if len(split_names) == 1:
-        username = config_get('github', 'username')
+        username = Config.get('github', 'username')
         repository_name = "{}/{}".format(username, repository_name)
     else:
         username = split_names[0]

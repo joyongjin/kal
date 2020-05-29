@@ -1,11 +1,19 @@
-import json
-
+from kal.core.json_obj import BaseJson
 from kal.env import path
 from kal.utils import dig
 
-with open(path.CONFIG_FILE) as f:
-    config_json = json.load(f)
 
+class Config(BaseJson):
+    filepath = path.CONFIG_FILE
+    default_data = {
+        "github": {
+            "username": "joyongjin"
+        },
+        "storage": {
+            "default": {}
+        }
+    }
 
-def config_get(*keys, default=None):
-    return dig(config_json, *keys, default=default)
+    @classmethod
+    def get(cls, *keys, default=None):
+        return dig(cls.data, *keys, default=default)

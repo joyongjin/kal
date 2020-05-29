@@ -1,38 +1,47 @@
 import json
 
+from kal.env import path
 
-class JsonObject:
+
+class BaseJson:
+    filepath = None
     default_data = {}
+    data = None
 
-    def __init__(self):
-        self.data = self.default_data
-        self.data.update(**self.load_json())
+    @classmethod
+    def get_default_data(cls):
+        return cls.default_data
 
-    def get_filename(self):
-        return ''
+    @classmethod
+    def initialize(cls):
+        if not path.exists(cls.filepath):
+            with open(cls.filepath, 'w') as f:
+                json.dump(cls.get_default_data(), f)
+        with open(path.STORAGE_FILE, 'r') as f:
+            cls.data = json.load(f)
 
-    def load_json(self, filename=None):
-        if filename is None:
-            filename = self.get_filename()
-        with open(filename, 'r') as f:
-            loaded_data = json.load(f)
-        return loaded_data
+    @classmethod
+    def get(cls, key, default=None):
+        return cls.data.get(key, default=default)
 
-    def write_json(self, data, filename=None):
-        if filename is None:
-            filename = self.get_filename()
 
-        with open(filename, 'w') as f:
-            json.dump(data, f)
-        return True
-
-    def get(self, key, default=None):
-        return self.data.get(key, default=default)
-
-    def set(self, key, value):
-        self.data[key] = value
+class WritableJson(BaseJson):
+    @classmethod
+    def set(cls, key, value):
+        cls.data[key] = value
         return value
 
-    def save(self):
-        self.write_json(self.data)
+    @classmethod
+    def bulk_set(cls, **kwargs):
+        for key, value in kwargs.items():
+            cls.set(key, value)
         return True
+
+    @classmethod
+    def delete(cls, key):
+        return cls.data.pop(key, None)
+
+    @classmethod
+    def save(cls):
+        with open(cls.filepath, 'w') as f:
+            json.dump(cls.data, f)
