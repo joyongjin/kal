@@ -1,11 +1,10 @@
 from cleo import argument, option
 
+from kal.core.base_commands import Command
 from kal.github import url_parsing
-from .base import Command
 
 
 class CloneCommand(Command):
-
     name = 'clone'
     description = 'clone repository from github'
     arguments = [
