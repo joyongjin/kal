@@ -1,8 +1,8 @@
 import os
 
-from kal.config import Config
+from kal.libraries.config import Config
 from kal.env import path
-from kal.storage import Storage
+from kal.libraries.storage import Storage
 
 
 def init():

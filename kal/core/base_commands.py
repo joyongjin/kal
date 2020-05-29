@@ -1,11 +1,8 @@
-import subprocess
-
 from cleo import Command as BaseCommand
+
+from kal.libraries import shell
 
 
 class Command(BaseCommand):
     def shell_call(self, command, output=None):
-        if output is not None:
-            output = getattr(subprocess, output.upper())
-
-        return subprocess.run(command, shell=True, stdout=output, encoding='utf-8')
+        return shell.call(command, output=output)

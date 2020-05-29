@@ -1,7 +1,7 @@
 from cleo import argument, option
 
 from kal.core.base_commands import Command
-from kal.github import url_parsing
+from kal.libraries.github import url_parsing, clone
 
 
 class CloneCommand(Command):
@@ -20,7 +20,4 @@ class CloneCommand(Command):
         if self.option('url'):
             self.line(clone_url)
             return 1
-        command = 'git clone {}'.format(clone_url)
-        if self.argument('target'):
-            command += ' {}'.format(self.argument('target'))
-        self.shell_call(command)
+        clone(clone_url, self.argument('target'))

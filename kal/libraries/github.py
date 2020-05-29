@@ -1,4 +1,5 @@
-from kal.config import Config
+from . import shell
+from .config import Config
 
 
 def url_parsing(repository_name, protocol='ssh'):
@@ -22,3 +23,11 @@ def url_parsing(repository_name, protocol='ssh'):
         raise ValueError('Invalid protocol name: {}'.format(protocol))
 
     return repository_name
+
+
+def clone(url, target=None):
+    command = 'git clone {}'.format(url)
+    if target:
+        command += ' {}'.format(target)
+
+    return shell.call(command)

@@ -1,4 +1,4 @@
-from kal.config import Config
+from .config import Config
 from kal.core.json_obj import WritableJson
 from kal.env import path
 
