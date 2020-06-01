@@ -20,7 +20,8 @@ class Note:
     def value(cls, key):
         if cls.note is None:
             cls.set_note()
-        return cls.note.get(key, {}).get('value')
+        value_obj = cls.note.get(key, {})
+        return value_obj.get('value')
 
     @classmethod
     def date(cls, key):

@@ -27,7 +27,7 @@ class NoteCommand(Command):
                     self.line_error('Empty notebook')
                     return 0
                 for k in keys:
-                    self.line('{} {}'.format(Note.date(k), Note.value(k)))
+                    self.line('{} {}'.format(Note.date(k), k))
                 return 0
             else:
                 self.line_error('list option do not need key')
@@ -51,8 +51,8 @@ class NoteCommand(Command):
                 return 1
 
         if value is None:
-            self.line_error('If you want to save or overwrite action, give value argument')
-            return 1
+            self.line(Note.value(key) or '')
+            return 0
 
         Note.set(key, value)
         Note.save()
