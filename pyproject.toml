@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "kal"
-version = "0.0.2"
+version = "0.0.3"
 description = "Personal assistant cli tool"
 authors = ["joyongjin <wnrhd114@gmail.com>"]
 include = ["kal"]
