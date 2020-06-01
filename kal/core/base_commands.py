@@ -8,6 +8,9 @@ class Command(BaseCommand):
     def shell_call(self, command, output=None):
         return shell.call(command, output=output)
 
+    def line_error(self, text, style='error', verbosity=None):
+        return super().line_error(text, style=style, verbosity=verbosity)
+
 
 class TimeCommand(Command):
     mapper = ['hour', 'minute', 'second']

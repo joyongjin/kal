@@ -19,7 +19,7 @@ class BaseJson:
 
     @classmethod
     def get(cls, key, default=None):
-        return cls.data.get(key, default=default)
+        return cls.data.get(key, default)
 
 
 class WritableJson(BaseJson):

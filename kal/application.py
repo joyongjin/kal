@@ -2,8 +2,7 @@ from cleo import Application as BaseApplication
 
 from kal import __version__
 from kal.initialize import init
-from .commands import CloneCommand
-from .commands.time import KSTCommand, UTCCommand
+from . import commands as cmds
 
 
 class Application(BaseApplication):
@@ -14,9 +13,9 @@ class Application(BaseApplication):
             self.add(command)
 
     def get_default_commands(self):
-        commands = [
-            CloneCommand(),
-            KSTCommand(),
-            UTCCommand(),
+        return [
+            cmds.CloneCommand(),
+            cmds.KSTCommand(),
+            cmds.UTCCommand(),
+            cmds.NoteCommand(),
         ]
-        return commands
