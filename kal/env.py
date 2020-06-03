@@ -12,6 +12,7 @@ class path:
 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     PROJECT_DIR = os.path.dirname(BASE_DIR)
+    DROPBOX_DIR = os.path.join(os.getenv('HOME'), 'Dropbox')
 
     if os.getenv('KAL_HOME_PATH'):
         HOME_DIR = os.getenv('KAL_HOME_PATH')
