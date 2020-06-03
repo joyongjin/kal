@@ -8,6 +8,7 @@ then
   rm $result_filename
 fi
 
+git checkout master
 poetry build
 rm dist/kal-*.whl
 filename=$( ls -lr dist/ | awk '{ print $9 }'  | grep  '.tar.gz' | head -1 )
