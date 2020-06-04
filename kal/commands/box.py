@@ -53,6 +53,11 @@ class BoxCommand(Command):
         argument('args', multiple=True)
     ]
 
+    def before_handle(self):
+        if not path.exists(path.DROPBOX_DIR):
+            raise CommandError('Dropbox not installed!')
+        super().before_handle()
+
     def check_args(self, length):
         args = self.argument('args')
         if len(args) < length:
