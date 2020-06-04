@@ -1,3 +1,4 @@
+import pend
 from cleo import argument
 from cleo.commands.base_command import CommandError
 
@@ -6,7 +7,7 @@ from kal.env import path
 
 """
 link # link all ln script
-git # git settings
+git [commit|config|s[tatus]|push]
 """
 
 LINK_PATH = {
@@ -64,8 +65,8 @@ class BoxCommand(Command):
             args = self.check_args(1)
             self.link(args[0])
         if command == 'git':
-            self.check_args(0)
-            self.git()
+            args = self.check_args(1)
+            self.git(args[0])
         else:
             raise CommandError('Invalid command')
 
@@ -77,6 +78,16 @@ class BoxCommand(Command):
         )
         self.shell_call(sc)
 
-    def git(self):
-        for c in GIT_SETTINGS_COMMANDS:
-            self.shell_call(c)
+    def git(self, command):
+        self.cwd = path.DROPBOX_DIR
+
+        if command == 'config':
+            for c in GIT_SETTINGS_COMMANDS:
+                self.shell_call(c)
+        elif command == 'commit':
+            self.shell_call('git add -A')
+            self.shell_call('git commit -m \'Automatic commit by kal\'')
+        elif command == 'push':
+            self.shell_call('git push origin master')
+        elif command in ['s', 'status']:
+            self.shell_call('git status')

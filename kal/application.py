@@ -18,4 +18,5 @@ class Application(BaseApplication):
             cmds.KSTCommand(),
             cmds.UTCCommand(),
             cmds.NoteCommand(),
+            cmds.BoxCommand(),
         ]
