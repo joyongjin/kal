@@ -20,7 +20,7 @@ class Application(BaseApplication):
             cmds.UTCCommand(),
             cmds.BoxCommand(),
             cmds.LinkCommand(),
-            cmds.GitCommand(),
+            cmds.RunCommand(),
             cmds.DockerCommand(),
             cmds.OcelCommand(),
         ]

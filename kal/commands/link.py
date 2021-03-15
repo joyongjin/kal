@@ -34,7 +34,6 @@ class LinkCommand(Command):
         return True
 
     def create_link(self, name, no_input=False):
-
         if name == 'all':
             link_config = Config.get('link', 'list', default=dict())
             if not no_input:
@@ -79,7 +78,7 @@ class LinkCommand(Command):
         elif self.option('list'):
             link_config = Config.get('link', 'list', default=dict())
             table = self.table()
-            table.set_header_row(['name', 'source', 'target'], )
+            table.set_header_row(['name', 'source', 'target'])
             for name, config in link_config.items():
                 if not config:
                     table.add_row([name, '<error>Invalid</error>', '<error>Invalid</error>'])

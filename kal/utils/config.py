@@ -17,6 +17,18 @@ class Config(BaseJson):
         return cls.get('link', 'list', name, default=None)
 
     @classmethod
+    def script(cls, name):
+        return cls.get('script', 'list', name, default=None)
+
+    @classmethod
+    def script_root(cls):
+        script_root = cls.get('script', 'root', default=None)
+        if script_root:
+            script_root = Path(script_root)
+        return script_root
+
+
+    @classmethod
     def link_root(cls):
         link_root = cls.get('link', 'root', default=None)
         if link_root:
