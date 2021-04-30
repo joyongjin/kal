@@ -2,7 +2,7 @@
 name = "kal"
 version = "0.2.0"
 description = "Personal assistant cli tool"
-authors = ["joyongjin <wnrhd114@gmail.com>"]
+authors = ["Jrog <jrog612@gmail.com>"]
 include = ["kal"]
 exclude = ["tests"]
 
