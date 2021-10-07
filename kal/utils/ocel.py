@@ -51,7 +51,7 @@ class Ocel:
     def run(self, template, target=None):
         template_path = self.ocel_path / template
         output_dir = target or '.'
-        return cookiecutter(template_path, output_dir=output_dir)
+        return cookiecutter(str(template_path.absolute()), output_dir=output_dir)
 
     def update(self):
         commands = [
