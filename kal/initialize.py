@@ -1,7 +1,7 @@
 import os
 
-from kal.utils.config import Config
 from kal import path
+from kal.utils.config import Config
 from kal.utils.storage import Storage
 
 

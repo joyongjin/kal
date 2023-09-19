@@ -1,7 +1,7 @@
 from cleo import Application as BaseApplication
 
 from kal.initialize import init
-from . import commands as cmds
+from kal import meta, commands as cmds
 
 
 class Application(BaseApplication):

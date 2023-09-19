@@ -1,4 +1,4 @@
-from .application import Application
+from kal.application import Application
 
 
 def main():
