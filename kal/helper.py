@@ -22,8 +22,6 @@ def dig(obj, *keys, default=None):
 
 
 def json_load(some, **kwargs):
-    kwargs['encoding'] = 'utf-8'
-
     if type(some) is str:
         try:
             return json.loads(some, **kwargs)
