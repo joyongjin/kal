@@ -1,13 +1,13 @@
 [tool.poetry]
 name = "kal"
-version = "0.3.1"
+version = "0.4.1.dev1"
 description = "Personal assistant cli tool"
 authors = ["Jrog <jrog612@gmail.com>"]
 include = ["kal"]
 exclude = ["tests"]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.11"
 cleo = "^0.8.1"
 cookiecutter = "^2.1.1"
 pend = "^1.0.2"
