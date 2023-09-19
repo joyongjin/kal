@@ -11,17 +11,20 @@ from kal.utils import github, shell
 class Ocel:
     @property
     def default_path(self):
-        return path.KAL_HOME_DIR / 'ocel'
+        return path.USER_HOME_DIR / '.ocel'
 
     def __init__(self):
         ocel_path = Config.get('ocel', 'path')
         self.ocel_path = path.resolve(ocel_path or self.default_path)
         if not self.ocel_path.exists():
-            self.clone_ocel()
+            self.clone_repository()
 
-    def clone_ocel(self):
+    def clone_repository(self):
+        ocel_repo = Config.get('ocel', 'repository')
+        if ocel_repo is None:
+            ocel_repo = github.url_parsing('ocel')
         github.clone(
-            github.url_parsing('ocel'),
+            ocel_repo,
             target=self.ocel_path
         )
 
