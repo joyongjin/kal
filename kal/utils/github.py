@@ -2,8 +2,9 @@ from . import shell
 from kal.utils.config import Config
 
 
-def url_parsing(repository_name, protocol='ssh'):
+def url_parsing(repository_name):
     split_names = repository_name.split('/')
+    protocol = Config.get('github', 'protocol', default='ssh')
 
     if len(split_names) == 1:
         username = Config.get('github', 'username')
