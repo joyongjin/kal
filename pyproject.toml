@@ -1,10 +1,11 @@
 [tool.poetry]
 name = "kal"
-version = "0.4.1.dev1"
+version = "0.5.1"
 description = "Personal assistant cli tool"
 authors = ["Jrog <jrog612@gmail.com>"]
 include = ["kal"]
 exclude = ["tests"]
+readme = 'README.md'
 
 [tool.poetry.dependencies]
 python = "^3.11"
