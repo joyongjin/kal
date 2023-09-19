@@ -24,7 +24,7 @@ class Config(BaseJson):
     def script_root(cls):
         script_root = cls.get('script', 'root', default=None)
         if script_root:
-            script_root = Path(script_root)
+            script_root = path.resolve(script_root)
         return script_root
 
 
@@ -32,7 +32,7 @@ class Config(BaseJson):
     def link_root(cls):
         link_root = cls.get('link', 'root', default=None)
         if link_root:
-            link_root = Path(link_root)
+            link_root = path.resolve(link_root)
         return link_root
 
     @classmethod

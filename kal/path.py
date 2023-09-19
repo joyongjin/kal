@@ -18,3 +18,7 @@ else:
 
 CONFIG_FILE = KAL_HOME_DIR / 'config.json'
 STORAGE_FILE = KAL_HOME_DIR / 'storage.json'
+
+
+def resolve(path_str):
+    return Path(os.path.expandvars(path_str))

@@ -15,7 +15,7 @@ class Ocel:
 
     def __init__(self):
         ocel_path = Config.get('ocel', 'path')
-        self.ocel_path = Path(ocel_path) if ocel_path else self.default_path
+        self.ocel_path = path.resolve(ocel_path or self.default_path)
         if not self.ocel_path.exists():
             self.clone_ocel()
 
