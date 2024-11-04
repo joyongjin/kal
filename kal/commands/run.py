@@ -10,16 +10,17 @@ class RunCommand(Command):
     description = 'run script in config'
     arguments = [
         argument('name', 'script name', optional=True),
-        argument('exec', 'executer of script', optional=True)
+        argument('extra', 'extra argument for script', optional=True, multiple=True),
     ]
     options = [
-        option('list', 'l', 'list all runnable scripts')
+        option('list', 'l', 'list all runnable scripts'),
+        option('exec', 'e', 'executer for script', value_required=True),
     ]
 
     default_executer = '"${SHELL}"'
 
     def get_executer(self, name):
-        runner = self.argument('exec')
+        runner = self.option('exec')
         if runner:
             return runner
         config = Config.script(name)
@@ -42,6 +43,10 @@ class RunCommand(Command):
 
         runner = self.get_executer(name)
         command = '{} {}'.format(runner, file_path)
+        arguments = self.argument('extra')
+        if arguments:
+            command += ' ' +  ' '.join(arguments)
+
         self.line('Run command: {}'.format(command))
         self.shell_call(command)
         return True
