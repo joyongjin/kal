@@ -9,6 +9,3 @@ kal은 개인용 어시스턴트 CLI 툴입니다.
 ```shell script
 pip install kal
 ```
-
-
-hi
